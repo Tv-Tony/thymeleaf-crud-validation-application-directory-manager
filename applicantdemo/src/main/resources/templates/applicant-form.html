@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Save Applicant</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Applicant Directory</h3>
+    <hr>
+
+    <p class="h4 mb-4">Save Applicant</p>
+
+<!--    Define the form, object is given from the model, if empty form is not populated-->
+    <form action="#" th:action="@{/applicants/processForm}"
+          th:object="${applicant}" method="POST">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <!--------------------------------------------------------------------------------------------------------------------->
+        <div class="mb-4">
+            <input type="text" th:field="*{firstName}"
+                   class="form-control w-25" placeholder="First name"
+                   th:classappend="${#fields.hasErrors('firstName')} ? 'is-invalid' : ''">
+            <div th:if="${#fields.hasErrors('firstName')}"
+                 th:errors="*{firstName}"
+                 class="invalid-feedback">
+            </div>
+        </div>
+        <!--------------------------------------------------------------------------------------------------------------------->
+
+        <div class="mb-4">
+            <input type="text" th:field="*{lastName}"
+                   class="form-control w-25" placeholder="Last name"
+                   th:classappend="${#fields.hasErrors('lastName')} ? 'is-invalid' : ''">
+<!--            Defines the validity-->
+            <div th:if="${#fields.hasErrors('lastName')}"
+                 th:errors="*{lastName}"
+                 class="invalid-feedback">
+            </div>
+        </div>
+
+        <!--------------------------------------------------------------------------------------------------------------------->
+        <div class="mb-4">
+            <input type="text" th:field="*{email}"
+                   class="form-control w-25" placeholder="Email"
+                   th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''">
+            <div th:if="${#fields.hasErrors('email')}"
+                 th:errors="*{email}"
+                 class="invalid-feedback">
+            </div>
+        </div>
+        <!--------------------------------------------------------------------------------------------------------------------->
+
+        <div class="mb-4">
+            <input type="text" th:field="*{hoursOfExperience}"
+                   class="form-control w-25" placeholder="Experience in Hours"
+                   th:classappend="${#fields.hasErrors('hoursOfExperience')} ? 'is-invalid' : ''">
+            <div th:if="${#fields.hasErrors('hoursOfExperience')}"
+                 th:errors="*{hoursOfExperience}"
+                 class="invalid-feedback">
+            </div>
+        </div>
+        <!--------------------------------------------------------------------------------------------------------------------->
+
+        <div class="mb-4">
+            <input type="text" th:field="*{postalCode}"
+                   class="form-control w-25" placeholder="Postal code"
+                   th:classappend="${#fields.hasErrors('postalCode')} ? 'is-invalid' : ''">
+            <div th:if="${#fields.hasErrors('postalCode')}"
+                 th:errors="*{postalCode}"
+                 class="invalid-feedback">
+            </div>
+        </div>
+        <!--------------------------------------------------------------------------------------------------------------------->
+
+        <div class="mb-4">
+            <input type="text" th:field="*{departmentKey}"
+                   class="form-control w-25" placeholder="Department Key"
+                   th:classappend="${#fields.hasErrors('departmentKey')} ? 'is-invalid' : ''">
+            <div th:if="${#fields.hasErrors('departmentKey')}"
+                 th:errors="*{departmentKey}"
+                 class="invalid-feedback">
+            </div>
+        </div>
+        <!--------------------------------------------------------------------------------------------------------------------->
+<!--        When clicked, data is sent to the processing form-->
+        <button type="submit" class="btn btn-info col-2">Save</button>
+
+    </form>
+
+    <hr>
+<!--   To go back to the main page-->
+    <a th:href="@{list}">Back to Applicants List</a>
+
+</div>
+
+</body>
+
+</html>

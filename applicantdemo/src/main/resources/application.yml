@@ -1,0 +1,9 @@
+spring:
+  application.name: studentdemo
+  datasource:
+    url: jdbc:mysql://localhost:3306/employee_applicants
+    username: springstudent
+    password: springstudent
+  config:
+    import:
+      - messages.properties
